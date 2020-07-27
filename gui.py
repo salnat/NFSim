@@ -3,6 +3,7 @@ from PIL import Image,ImageFilter
 import time
 import numpy as np
 import sys
+OriImage = Image.open('im2.jpg')
 def NF_instance(parameter_blur,parameter_size): #takes care of blurring and resizing; we still need to figure out how to deal 
     #with the parameters
     boxImage = OriImage.filter(ImageFilter.BoxBlur(parameter_blur))#blurring
