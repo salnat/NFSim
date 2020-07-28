@@ -31,7 +31,6 @@ streamz           0.5.4
 
 time-window       0.1.0
 
-The extended list could be found in the end of the document.
 # __Lisence__
 This project is lisenced under MIT lisence
 
