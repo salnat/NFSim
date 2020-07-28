@@ -75,8 +75,7 @@ Neurofeedback, also called neurotherapy or neurobiofeedback, is a type of biofee
 		The function displays the online visual interface.
 
 
-		this function will load the .mat files used to simulate the eeg signals from patient.
-
+		
 
 
 
