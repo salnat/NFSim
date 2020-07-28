@@ -8,6 +8,8 @@ import pygame
 from PIL import Image,ImageFilter
 import time
 import sys
+
+
 def open_im(filename):#opens the image 
     try:
         OriImage = Image.open(filename)
@@ -80,14 +82,56 @@ def dict_2_np(mat_dict:dict): # This function converts dictionary data to numpy 
 
 
 def data_giver(data_array:np): # This function uploads nuerofeedbak parametars to the visual interface 
+    np_data=np.array(list(mat_dict.values()))
+    return np_data
+
+
+def data_giver(data_array:np): # This function uploads nuerofeedbak parametars to the visual interface 
+    """Streams data of two neurofeedback parameters from np.array matrix,
+    assuming they're both positive integers in a defined range.
+    
+    Parameters
+    ----------
+    data_array:np
+        A matrix Positive integers
+    
+    Returns
+    -------
+    The function activates neurofeedback visual interface
+    
+    Raises
+    ------
+    ValueError
+        If one of the parameters is negative or equels to zero or None.
+        If one of the parameter is not in the defined range.
+
+    TypeError
+        If the data array is not np.ndarray 
+    """
+
+    if not (isinstance(data_array, np.ndarray)):
+        raise TypeError(f"Received {data_array}; expected numpy array")
+
     for column in data_array.T:
 
+        if  (column[0]== None) or (column[1] == None):
+            raise ValueError(f"Received {column[0], column[1]}; expected a numerical value")
+
+        if (column[0] <= 0) or (column[1] <= 0):
+            raise ValueError(f"Received {column[0], column[1]}; expected positive integers or floats")
+
+        if  not (0<column[0]<=10) or not (0.1<=column[1]<=1):
+            raise ValueError(f"Received {column[0], column[1]}; expected a value in defined range")
+
+        if  (column[0] == bool) or (column[1] ==  bool):
+            raise TypeError(f"Received {column[0], column[1]}; expected a numerical value")
+
         main(column[0],column[1]) # Call for the visual interface function
-        time.sleep( 1) # Data samplig rate
+        time.sleep(1) # Data samplig rate
 
 def streamer_func (datout_file:str, lenout_file:str, folder_path=Path().absolute()):
     """This function receives two parameters from the EEG Neurofeedback system (Curry7) 
-    in Matlab formt and stream it to python. The function pushes the Matlab data to a papline based 
+    in Matlab formt and stream it to python. The function pushes the Matlab data through a papline based 
     on streamz library.
 
     Parameters
@@ -101,17 +145,15 @@ def streamer_func (datout_file:str, lenout_file:str, folder_path=Path().absolute
 
     Returns
     -------
-    The function displays the online visual interface.
+        The function activates the visual interface
     """
     datout_source = Stream()
     a=datout_source.map(lambda x: x[0]).map(load_mat_data).map(dict_2_np)
     b=datout_source.map(lambda x: x[1]).map(load_mat_data).map(dict_2_np)
 
-
-    c = a.zip(b).map(np.concatenate).sink(data_giver)
+    a.zip(b).map(np.concatenate).sink(data_giver)
 
     datout_source.emit((datout_file, lenout_file))
-
 
 
 streamer_func('datout.mat', 'lenout.mat')
