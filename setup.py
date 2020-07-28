@@ -34,7 +34,10 @@ INSTALL_REQUIRES = [
     'flake8',
     'pylint',
     'pygame',
-    'numpy'
+    'numpy',
+    'streamz',
+    'mat4py',
+    'pathlib'
 ]
 
 ###################################################################
