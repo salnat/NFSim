@@ -8,5 +8,5 @@ In a real Neurofeedback session, the patient would try to make the picture clear
 
 # __What is Neurofeedback__ ?
 
-Neurofeedback, also called neurotherapy or neurobiofeedback, is a type of biofeedback that uses real-time displays of brain activity—most commonly electroencephalography (EEG)—in an attempt to teach self-regulation of brain function. Typically, sensors are placed on the scalp to measure electrical activity, with measurements displayed using video displays or sound. It is mostly known as a complementary and alternative treatment of many brain dysfunctions. [Read More](https://www.psychologytoday.com/intl/therapy-types/neurofeedback) 
+Neurofeedback, also called neurotherapy or neurobiofeedback, is a type of biofeedback that uses real-time displays of brain activity—most commonly electroencephalography (EEG)—in an attempt to teach self-regulation of brain function. Typically, sensors are placed on the scalp to measure electrical activity, with measurements displayed using video displays or sound. It is mostly known as a complementary and alternative treatment of many brain dysfunctions. [Read More](https://brainworksneurotherapy.com/what-is-neurofeedback) 
 
