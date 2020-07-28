@@ -1,4 +1,4 @@
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 __title__ = "NFSim"
 __description__ = "Neurofeedback simulation"
 __url__ = "https://github.com/salnat/NFSim.git"
